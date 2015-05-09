@@ -1,15 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
+using System.Reflection;
+using log4net;
+using Nancy.Hosting.Self;
 
 namespace ODR_Studio.WebApi.Host
 {
     class Program
     {
-        static void Main(string[] args)
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        public static void Main(string[] args)
         {
+            log.Debug("Starting WebApi.Host...");
+
+            try
+            {
+                string hostUrl = ConfigurationManager.AppSettings["HostUrl"];
+                using (var host = new NancyHost(new Uri(hostUrl), new CustomNancyBootstrapper(log)))
+                {
+                    log.DebugFormat("Nancy started on url: {0}", hostUrl);
+                    host.Start();
+                    Console.ReadLine();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.ToString());
+            }
         }
     }
 }

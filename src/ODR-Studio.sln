@@ -13,6 +13,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODR-Studio.WebApi.Host", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ODR-Studio.WebApi.Client", "ODR-Studio.WebApi.Client\ODR-Studio.WebApi.Client.csproj", "{616FE612-02A2-4526-95F5-20D42106F354}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{4DC9B700-EDF4-4B48-A6B8-88F80DD4BE1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odr-DabMux-Runner", "Tools\Odr-DabMux-Runner\Odr-DabMux-Runner.csproj", "{21DA62D6-3C17-4B88-B92B-735B4FA38494}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{35949022-640B-4385-87A0-6242AC3A6F96}"
+	ProjectSection(SolutionItems) = preProject
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,8 +68,19 @@ Global
 		{616FE612-02A2-4526-95F5-20D42106F354}.Release|Any CPU.Build.0 = Release|Any CPU
 		{616FE612-02A2-4526-95F5-20D42106F354}.Release|x86.ActiveCfg = Release|Any CPU
 		{616FE612-02A2-4526-95F5-20D42106F354}.Release|x86.Build.0 = Release|Any CPU
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494}.Debug|x86.Build.0 = Debug|Any CPU
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494}.Release|x86.ActiveCfg = Release|Any CPU
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21DA62D6-3C17-4B88-B92B-735B4FA38494} = {4DC9B700-EDF4-4B48-A6B8-88F80DD4BE1F}
 	EndGlobalSection
 EndGlobal
