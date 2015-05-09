@@ -6,8 +6,8 @@
     <ProjectGuid>{5CB7320D-88B3-489D-9358-936FD08F6CBC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ODRStudio.Host</RootNamespace>
-    <AssemblyName>ODR-Studio</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <AssemblyName>ODR-Studio.Host</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
