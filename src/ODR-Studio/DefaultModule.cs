@@ -1,6 +1,7 @@
 ﻿using System;
 using Nancy;
 using log4net;
+using ODRStudio.ViewModels;
 
 namespace ODRStudio
 {
@@ -13,7 +14,7 @@ namespace ODRStudio
             Get["/"] = x =>
             {
                 log.Debug("GET [/] route hit received");
-                return View["index.html"];
+                return View["index.html", new Index()];
             };
         }
     }
