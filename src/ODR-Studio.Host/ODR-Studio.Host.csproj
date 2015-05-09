@@ -7,7 +7,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ODRStudio.Host</RootNamespace>
     <AssemblyName>ODR-Studio.Host</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
