@@ -27,7 +27,10 @@ namespace ODR_Studio.WebApi.Host
             catch (Exception ex)
             {
                 log.Error(ex.ToString());
+                Console.ReadLine();
             }
+
+            log.Debug("Exiting WebApi.Host...");
         }
     }
 }

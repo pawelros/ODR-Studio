@@ -31,10 +31,6 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
@@ -46,6 +42,9 @@
       <HintPath>..\packages\Nancy.Hosting.Self.1.2.0\lib\net40\Nancy.Hosting.Self.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
@@ -57,15 +56,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ODR-Studio.WebApi.Client\ODR-Studio.WebApi.Client.csproj">
-      <Project>{616fe612-02a2-4526-95f5-20d42106f354}</Project>
+      <Project>{616FE612-02A2-4526-95F5-20D42106F354}</Project>
       <Name>ODR-Studio.WebApi.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\ODR-Studio\ODR-Studio.csproj">
@@ -73,7 +72,7 @@
       <Name>ODR-Studio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tools\Odr-DabMux-Runner\Odr-DabMux-Runner.csproj">
-      <Project>{21da62d6-3c17-4b88-b92b-735b4fa38494}</Project>
+      <Project>{21DA62D6-3C17-4B88-B92B-735B4FA38494}</Project>
       <Name>Odr-DabMux-Runner</Name>
     </ProjectReference>
   </ItemGroup>
