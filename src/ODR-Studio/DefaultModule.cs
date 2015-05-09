@@ -13,7 +13,7 @@ namespace ODRStudio
             Get["/"] = x =>
             {
                 log.Debug("GET [/] route hit received");
-                return "Hello World!";
+                return View["index.html"];
             };
         }
     }
