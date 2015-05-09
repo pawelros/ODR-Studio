@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Reflection;
 using log4net;
 using Nancy.Hosting.Self;
+using Odr_DabMux_Runner;
 
 namespace ODR_Studio.WebApi.Host
 {
@@ -16,6 +17,7 @@ namespace ODR_Studio.WebApi.Host
 
             try
             {
+                DabMuxConfig.CurrentConfig = DabMuxConfig.OutputToFileConfig;
                 string hostUrl = ConfigurationManager.AppSettings["HostUrl"];
                 using (var host = new NancyHost(new Uri(hostUrl), new CustomNancyBootstrapper(log)))
                 {

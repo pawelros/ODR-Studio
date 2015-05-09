@@ -76,6 +76,10 @@
       <Project>{10B1CCA1-4EC9-4083-9761-A74BCF13C029}</Project>
       <Name>ODR-Studio.WebApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\Odr-DabMux-Runner\Odr-DabMux-Runner.csproj">
+      <Project>{21DA62D6-3C17-4B88-B92B-735B4FA38494}</Project>
+      <Name>Odr-DabMux-Runner</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
