@@ -1,9 +1,8 @@
 ﻿using System;
 using log4net;
 using Nancy.Hosting.Self;
-using ODRStudio.Host;
 
-namespace ODRStudio
+namespace ODRStudio.Host
 {
     class MainClass
     {
@@ -15,7 +14,7 @@ namespace ODRStudio
 
             try
             {
-                using (var host = new NancyHost(new Uri(Settings.HostUrl)))
+                using (var host = new NancyHost(new Uri(Settings.HostUrl), new CustomNancyBootstrapper(log)))
                 {
                     log.DebugFormat("Nancy started on url: {0}", Settings.HostUrl);
                     host.Start();

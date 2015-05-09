@@ -1,18 +1,22 @@
-﻿using System;
+﻿using log4net;
 using Nancy;
-using Nancy.TinyIoc;
 using Nancy.Bootstrapper;
-using log4net;
+using Nancy.TinyIoc;
 
 namespace ODRStudio.Host
 {
     public class CustomNancyBootstrapper: DefaultNancyBootstrapper
     {
-        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private ILog log;
+
+        public CustomNancyBootstrapper(ILog log)
+        {
+            this.log = log;
+        }
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
-            container.Register<ILog>(log);
+            container.Register(log);
         }
     }
 }

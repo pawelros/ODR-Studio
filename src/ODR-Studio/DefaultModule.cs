@@ -8,6 +8,8 @@ namespace ODRStudio
     {
         public DefaultModule(ILog log)
         {
+            log.Debug("Initializing DefaultModule...");
+
             Get["/"] = x =>
             {
                 log.Debug("GET [/] route hit received");
