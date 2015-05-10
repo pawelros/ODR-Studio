@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ODR_Studio.WebApi.Client
 {
@@ -25,14 +26,14 @@ namespace ODR_Studio.WebApi.Client
             return configs;
         }
 
-        public string RunDefault()
+        public Dictionary<string,string> RunDefault()
         {
             string urlToHit = apiUrl + "/run";
             string json = this.webClient.DownloadString(urlToHit);
 
-            string[] consoleOutput = JsonConvert.DeserializeObject<string[]>(json);
+            var consoleOutput = JsonConvert.DeserializeObject<Dictionary<string,string>>(json);
 
-            return consoleOutput.First();
+            return consoleOutput;
         }
     }
 }

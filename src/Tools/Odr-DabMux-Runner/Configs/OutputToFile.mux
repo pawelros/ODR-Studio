@@ -100,7 +100,7 @@ subchannels {
     sub-fu {
         type audio
         ; example file input
-        inputfile "funk.mp2"
+        inputfile "/home/pr/open_digital_radio/ODR-DabMux/funk.mp2"
         nonblock false
         bitrate 128
         id 10
@@ -121,7 +121,7 @@ subchannels {
     }
     sub-lu {
         type audio
-        inputfile "luschtig.mp2"
+        inputfile "/home/pr/open_digital_radio/ODR-DabMux/luschtig.mp2"
         nonblock false
         bitrate 128
         id 3

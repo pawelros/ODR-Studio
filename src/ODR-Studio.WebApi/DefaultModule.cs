@@ -27,8 +27,11 @@ namespace ODR_Studio.WebApi
                 log.Debug("GET [/run] route hit received");
 
                 Runner runner = new Runner();
-                string result = runner.RunDefaultConfigurationFile();
-                var json = JsonConvert.SerializeObject(new[] { result });
+                string[] result = runner.RunDefaultConfigurationFile();
+                var resultObj = new {
+                        standard_output = result[0],
+                        standard_error = result[1]};
+                var json = JsonConvert.SerializeObject(resultObj);
 
                 return json;
             };

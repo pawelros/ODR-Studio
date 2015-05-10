@@ -2,6 +2,7 @@
 using System.Configuration;
 using log4net;
 using Nancy.Hosting.Self;
+using Nancy;
 
 namespace ODRStudio.Host
 {
@@ -15,6 +16,7 @@ namespace ODRStudio.Host
 
             try
             {
+                StaticConfiguration.DisableErrorTraces = false;
                 string hostUrl = ConfigurationManager.AppSettings["HostUrl"];
                 string apiHostUrl = ConfigurationManager.AppSettings["ApiHostUrl"];
                 using (var host = new NancyHost(new Uri(hostUrl), new CustomNancyBootstrapper(apiHostUrl, log)))

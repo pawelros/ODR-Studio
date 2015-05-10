@@ -3,6 +3,7 @@ using log4net;
 using Nancy;
 using ODRStudio.ViewModels;
 using ODR_Studio.WebApi.Client;
+using System.IO;
 
 namespace ODRStudio
 {
@@ -29,9 +30,30 @@ namespace ODRStudio
             {
                 log.Debug("GET [/run] route hit received");
 
-                string result = apiClient.RunDefault();
+                System.Collections.Generic.Dictionary<string, string> result = apiClient.RunDefault();
 
-                return View["result.html", new Result { Log = result }];
+                return View["result.html", new Result { StandardOutput = result["standard_output"], StandardError = result["standard_error"] }];
+            };
+
+            Get["/download_eti"] = x =>
+            {
+                log.Debug("GET [/download_eti] route hit received");
+
+                var response = 
+                    new Response();
+
+                response.Headers.Add("Content-Disposition", "attachment; filename=output.eti");
+                response.ContentType = "text/plain";
+                response.Contents = stream =>
+                {
+                    using (var writer = new StreamWriter(stream))
+                    {
+                        var raw = File.ReadAllText("/home/pr/open_digital_radio/ODR-DabMux/myfirst.eti");
+                        writer.Write(raw);
+                    }
+                };
+
+                return response;
             };
         }
     }
