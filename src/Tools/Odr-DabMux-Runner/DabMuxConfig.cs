@@ -13,11 +13,11 @@ namespace Odr_DabMux_Runner
             {
                 if (string.IsNullOrWhiteSpace(outputToFileConfig))
                 {
-                    outputToFileConfig = File.ReadAllText(@"Configs/OutputToFile.mux");
+                    outputToFileConfig = File.ReadAllText(@"/home/pr/open_digital_radio/ODR-Studio/src/Tools/Odr-DabMux-Runner/Configs/OutputToFile.mux");
                 }
 
                 return outputToFileConfig;
             }
-        } 
+        }
     }
 }

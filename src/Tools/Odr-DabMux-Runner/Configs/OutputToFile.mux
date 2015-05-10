@@ -305,7 +305,7 @@ outputs {
 
     ; Other outputs:
     ; TCP listen on port
-    ;net "tcp://host:port"
+    net "tcp://localhost:8082"
     ; UDP send to host:port
     ;net "ucp://host:port"
     ; RAW (for farsync ETI card)
