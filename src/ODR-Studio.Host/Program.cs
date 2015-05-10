@@ -16,7 +16,8 @@ namespace ODRStudio.Host
             try
             {
                 string hostUrl = ConfigurationManager.AppSettings["HostUrl"];
-                using (var host = new NancyHost(new Uri(hostUrl), new CustomNancyBootstrapper(log)))
+                string apiHostUrl = ConfigurationManager.AppSettings["ApiHostUrl"];
+                using (var host = new NancyHost(new Uri(hostUrl), new CustomNancyBootstrapper(apiHostUrl, log)))
                 {
                     log.DebugFormat("Nancy started on url: {0}", hostUrl);
                     host.Start();

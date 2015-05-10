@@ -17,7 +17,6 @@ namespace ODR_Studio.WebApi.Host
 
             try
             {
-                DabMuxConfig.CurrentConfig = DabMuxConfig.OutputToFileConfig;
                 string hostUrl = ConfigurationManager.AppSettings["HostUrl"];
                 using (var host = new NancyHost(new Uri(hostUrl), new CustomNancyBootstrapper(log)))
                 {

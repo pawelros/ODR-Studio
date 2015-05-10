@@ -2,10 +2,9 @@
 
 namespace ODRStudio.ViewModels
 {
-    public class Index
+    public class Result
     {
         public string Version { get; } = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        public string[] Configs { get; set; }
-        public string CurrentConfig { get; set; }
+        public string Log { get; set; }
     }
 }

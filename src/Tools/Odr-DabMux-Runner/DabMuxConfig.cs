@@ -1,30 +1,23 @@
-﻿using System.IO;
+﻿using System.Dynamic;
+using System.IO;
 
 namespace Odr_DabMux_Runner
 {
     public static class DabMuxConfig
     {
-        private static readonly object lock_object = new object();
-        private static string currentConfig;
+        private static string outputToFileConfig;
 
-        public static string CurrentConfig
+        public static string OutputToFileConfig
         {
             get
             {
-                lock (lock_object)
+                if (string.IsNullOrWhiteSpace(outputToFileConfig))
                 {
-                    return currentConfig;
+                    outputToFileConfig = File.ReadAllText(@"Configs/OutputToFile.mux");
                 }
-            }
-            set
-            {
-                lock (lock_object)
-                {
-                    currentConfig = value;
-                }
-            }
-        }
 
-        public static string OutputToFileConfig => File.ReadAllText(@"Configs/OutputToFile.mux");
+                return outputToFileConfig;
+            }
+        } 
     }
 }

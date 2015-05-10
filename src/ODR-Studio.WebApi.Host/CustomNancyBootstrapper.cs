@@ -7,7 +7,7 @@ namespace ODR_Studio.WebApi.Host
 {
     public class CustomNancyBootstrapper : DefaultNancyBootstrapper
     {
-        private ILog log;
+        private readonly ILog log;
 
         public CustomNancyBootstrapper(ILog log)
         {
