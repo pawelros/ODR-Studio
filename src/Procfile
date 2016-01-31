@@ -1,2 +1,1 @@
-web: echo hello
-web2: ls -la
+dabmux: odr-dabmux -e /home/pr/odr_studio/src/dabmux.config
