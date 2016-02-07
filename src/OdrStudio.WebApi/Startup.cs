@@ -1,12 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using OdrStudio.WebApi.Models.Player;
+using OdrStudio.WebApi.Models.Player.Vlc;
 
 namespace OdrStudio.WebApi
 {
@@ -28,6 +26,9 @@ namespace OdrStudio.WebApi
         {
             // Add framework services.
             services.AddMvc();
+            services.Configure<PlayerConfiguration>(Configuration.GetSection("Player"));
+            var serviceDescriptor = new ServiceDescriptor(typeof(IPlayerClient), typeof(VlcClient), ServiceLifetime.Singleton);
+            services.Add(serviceDescriptor);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,19 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using OdrStudio.WebApi.Models.Player;
 
 namespace OdrStudio.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class PlayerController : Controller
     {
+        private readonly IPlayerClient playerClient;
+
+        public PlayerController(IPlayerClient playerClient)
+        {
+            this.playerClient = playerClient;
+        }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IPlayerStatus> Get()
         {
-            return new string[] { "value1", "value2" };
+            IPlayerStatus status = await this.playerClient.GetStatus();
+
+            return status;
         }
 
         // GET api/values/5
