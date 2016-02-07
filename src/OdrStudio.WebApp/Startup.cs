@@ -7,6 +7,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNet.Cors;
 
 namespace OdrStudio.WebApp
 {
@@ -55,6 +56,10 @@ namespace OdrStudio.WebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            // app.UseCors(builder =>
+            //     //builder.WithOrigins("http://localhost:5000", "http://localhost:5001"));
+            //     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         }
 
         // Entry point for the application.

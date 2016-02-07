@@ -29,6 +29,7 @@ namespace OdrStudio.WebApi
             services.Configure<PlayerConfiguration>(Configuration.GetSection("Player"));
             var serviceDescriptor = new ServiceDescriptor(typeof(IPlayerClient), typeof(VlcClient), ServiceLifetime.Singleton);
             services.Add(serviceDescriptor);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +37,10 @@ namespace OdrStudio.WebApi
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseCors(builder =>
+                //builder.WithOrigins("http://localhost:5000", "http://localhost:5001"));
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseIISPlatformHandler();
 

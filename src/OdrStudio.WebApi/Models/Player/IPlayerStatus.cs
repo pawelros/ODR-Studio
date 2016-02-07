@@ -2,13 +2,13 @@ namespace OdrStudio.WebApi.Models.Player
 {
     public interface IPlayerStatus
     {
-        bool IsOnline { get; set; }
-        bool IsPlaying { get; set; }
-        bool IsStopped { get; set; }
-        bool IsPaused { get; set; }
-        string TrackName { get; set; }
-        int TrackTime { get; set; }
-        int TrackLength { get; set; }
-        double TrackPosition { get; set; }
+        bool isOnline { get; set; }
+        bool isPlaying { get; set; }
+        bool isStopped { get; set; }
+        bool isPaused { get; set; }
+        string trackName { get; set; }
+        int trackTime { get; set; }
+        int trackLength { get; set; }
+        double trackPosition { get; set; }
     }
 }

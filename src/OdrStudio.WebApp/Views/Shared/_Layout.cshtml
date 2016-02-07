@@ -16,7 +16,7 @@
             <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         </environment>
     </head>
-    <body ng-app>
+    <body ng-app="studioApp">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -48,8 +48,8 @@
         <environment names="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
             <script src="~/lib/angular/angular.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
         </environment>
         <environment names="Staging,Production">
             <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
@@ -60,11 +60,12 @@
                     asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                     asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
             </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"
                     asp-fallback-src="~/lib/angular/angular.min.js"
                     asp-fallback-test="window.angular">
             </script>
+            <!--<script src="~/js/site.min.js" asp-append-version="true"></script>-->
+            <script src="~/js/site.js" asp-append-version="true"></script>
         </environment>
 
         @RenderSection("scripts", required: false)

@@ -12,25 +12,25 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
             switch (vlcResponse.State)
             {
                 case "playing":
-                    result.IsPlaying = true;
-                    result.IsPaused = false;
-                    result.IsStopped = false;
+                    result.isPlaying = true;
+                    result.isPaused = false;
+                    result.isStopped = false;
                     break;
 
                 case "paused":
-                    result.IsPlaying = false;
-                    result.IsPaused = true;
-                    result.IsStopped = false;
+                    result.isPlaying = false;
+                    result.isPaused = true;
+                    result.isStopped = false;
                     break;
 
                 case "stopped":
-                    result.IsPlaying = false;
-                    result.IsPaused = false;
-                    result.IsStopped = true;
+                    result.isPlaying = false;
+                    result.isPaused = false;
+                    result.isStopped = true;
                     break;
             }
 
-            result.IsOnline = true;
+            result.isOnline = true;
 
             var information = vlcResponse.Infos[0];
 
@@ -46,14 +46,14 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
                     {
                         string filename = info.Value;
 
-                        result.TrackName = filename;
+                        result.trackName = filename;
                     }
                 }
             }
 
-            result.TrackTime = Int32.Parse(vlcResponse.Time);
-            result.TrackLength = Int32.Parse(vlcResponse.Length);
-            result.TrackPosition = Double.Parse(vlcResponse.Position);
+            result.trackTime = Int32.Parse(vlcResponse.Time);
+            result.trackLength = Int32.Parse(vlcResponse.Length);
+            result.trackPosition = Double.Parse(vlcResponse.Position);
 
             return result;
         }

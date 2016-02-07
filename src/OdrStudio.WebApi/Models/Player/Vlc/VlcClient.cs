@@ -54,7 +54,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
             catch (Exception ex)
             {
                 this.logger.LogError(ex.ToString());
-                return new PlayerStatus { IsOnline = false };
+                return new PlayerStatus { isOnline = false };
             }
         }
     }

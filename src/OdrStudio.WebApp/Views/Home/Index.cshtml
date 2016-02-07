@@ -2,12 +2,12 @@
     ViewData["Title"] = "Odr Studio";
 }
 
-<div id="player" class="row">
+<div id="player" class="row" ng-controller="playerController">
     <div class="container">
-        <h2>{{trackName}}</h2>
+        <h2>{{status.trackName}}</h2>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-            <span class="sr-only">70% Complete</span>
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{status.trackPosition}}" aria-valuemin="0" aria-valuemax="1" style="width:{{status.trackPosition * 100}}%">
+            {{status.trackTime/status.trackLength*100}}%
             </div>
         </div>
     </div>
