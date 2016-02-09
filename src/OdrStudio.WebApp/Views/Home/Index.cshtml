@@ -14,20 +14,34 @@
 </div>
 
 <div class="row" ng-controller="playerController">
-    <div class="col-md-6">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699314">Add an appsetting in config and access it in app.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
+    <div class="col-md-3">
+        <h2>MOT Slideshow</h2>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li ng-repeat="url in status.motSlideShowUrls" data-target="#myCarousel" data-slide-to="{{$index}}" ng-attr-class="{{$index == 0 && 'active' || undefined }}"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div ng-repeat="url in status.motSlideShowUrls" ng-attr-class="{{$index == 0 && 'item active' || 'item' }}">
+                <img src="{{url}}" alt="Mot slideshow will load automatically" class="carousel-mot">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            </div>
     </div>
-    <div class="col-md-4">
-        <h2>Overview</h2>
+    <div class="col-md-6">
+        <h2>DSL</h2>
         <ul>
             <li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET 5</a></li>
             <li><a href="http://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET 5 such as Startup and middleware.</a></li>
@@ -38,11 +52,11 @@
             <li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
         </ul>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
         <h2>Health check</h2>
         <ul>
-            <li>Web API is <span class="label label-{{status.isApiOnline ? 'success' : 'danger'}}">{{status.isApiOnline ? 'Online' : 'Offline'}}</span></li>
-            <li>VLC is <span class="label label-{{status.isOnline ? 'success' : 'danger'}}">{{status.isOnline ? 'Online' : 'Offline'}}</span></li>
+            <li><span class="label label-{{status.isApiOnline ? 'success' : 'danger'}}">{{status.isApiOnline ? 'Online' : 'Offline'}}</span>&nbspWeb API</li>
+            <li><span class="label label-{{status.isOnline ? 'success' : 'danger'}}">{{status.isOnline ? 'Online' : 'Offline'}}</span>&nbspVlc API</li>
         </ul>
     </div>
 </div>

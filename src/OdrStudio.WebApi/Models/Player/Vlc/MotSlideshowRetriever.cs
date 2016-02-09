@@ -43,7 +43,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
                     string newFullName = rgx.Replace(f.FullName, "/artistalbum");
                     this.logger.LogVerbose($"newFullName: {newFullName}");
 
-                    var uri = new Uri("file://" + newFullName);
+                    var uri = new Uri("file:///player/motslideshow" + newFullName);
                     this.logger.LogVerbose($"uri: {uri}");
                     this.logger.LogVerbose($"uri.AbsolutePath: {uri.AbsolutePath}");
                     this.logger.LogVerbose($"uri.AbsoluteUri: {uri.AbsoluteUri}");

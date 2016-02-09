@@ -22,3 +22,8 @@ textarea {
     font-size: 20px;
     line-height: 1.4;
 }
+
+.carousel-mot {
+    width: 320px;
+    height: 240px;
+}
