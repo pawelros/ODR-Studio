@@ -27,8 +27,14 @@ namespace OdrStudio.WebApi
             // Add framework services.
             services.AddMvc();
             services.Configure<PlayerConfiguration>(Configuration.GetSection("Player"));
-            var serviceDescriptor = new ServiceDescriptor(typeof(IPlayerClient), typeof(VlcClient), ServiceLifetime.Singleton);
-            services.Add(serviceDescriptor);
+
+            var motSLideShowRetriever = new ServiceDescriptor(typeof(IMotSlideShowRetriever), typeof(MotSlideShowRetriever), ServiceLifetime.Singleton);
+            var playerClient = new ServiceDescriptor(typeof(IPlayerClient), typeof(VlcClient), ServiceLifetime.Singleton);
+
+
+            services.Add(motSLideShowRetriever);
+            services.Add(playerClient);
+
             services.AddCors();
         }
 

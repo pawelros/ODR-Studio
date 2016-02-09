@@ -29,6 +29,7 @@ namespace OdrStudio.WebApp
         {
             // Add framework services.
             services.AddMvc();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,9 +58,9 @@ namespace OdrStudio.WebApp
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            // app.UseCors(builder =>
-            //     //builder.WithOrigins("http://localhost:5000", "http://localhost:5001"));
-            //     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(builder =>
+                //builder.WithOrigins("http://localhost:5000", "http://localhost:5001"));
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
         }
 
         // Entry point for the application.

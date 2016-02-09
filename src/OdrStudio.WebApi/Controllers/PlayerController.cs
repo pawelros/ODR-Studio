@@ -14,7 +14,7 @@ namespace OdrStudio.WebApi.Controllers
             this.playerClient = playerClient;
         }
 
-        // GET: api/values
+        // GET: api/status
         [HttpGet]
         public async Task<IPlayerStatus> Get()
         {

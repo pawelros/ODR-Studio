@@ -15,13 +15,16 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
         private readonly ILogger logger;
         private readonly string username;
         private readonly string password;
+        
+        private readonly IMotSlideShowRetriever motSlideShowRetriever;
 
-        public VlcClient(IOptions<PlayerConfiguration> configuration, ILoggerFactory loggerFactory)
+        public VlcClient(IOptions<PlayerConfiguration> configuration, ILoggerFactory loggerFactory, IMotSlideShowRetriever motSlideShowRetriever)
         {
             this.logger = loggerFactory.CreateLogger("VlcClient");
             this.uri = new Uri(configuration.Value.Uri);
             this.username = configuration.Value.Username;
             this.password = configuration.Value.Password;
+            this.motSlideShowRetriever = motSlideShowRetriever;
 
             this.logger.LogVerbose($"VlcClient created with config uri {this.uri}");
         }
@@ -46,7 +49,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
                     XmlSerializer serializer = new XmlSerializer(typeof(VlcResponse));
                     var result = serializer.Deserialize(stream) as VlcResponse;
 
-                    var dto = result.AsPlayerStatus();
+                    var dto = result.AsPlayerStatus(this.motSlideShowRetriever);
 
                     return dto;
                 }

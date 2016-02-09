@@ -5,7 +5,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
 {
     internal static class Extensions
     {
-        public static IPlayerStatus AsPlayerStatus(this VlcResponse vlcResponse)
+        public static IPlayerStatus AsPlayerStatus(this VlcResponse vlcResponse, IMotSlideShowRetriever motSlideShowRetriever)
         {
             PlayerStatus result = new PlayerStatus();
 
@@ -40,13 +40,28 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
 
                 if (category != null && category.info != null)
                 {
-                    var info = category.info.FirstOrDefault(i => i.name == "filename");
+                    var fileNameInfo = category.info.FirstOrDefault(i => i.name == "filename");
+                    var artistInfo = category.info.FirstOrDefault(i => i.name == "ARTIST");
+                    var titleInfo = category.info.FirstOrDefault(i => i.name == "TITLE");
+                    var artworkUrl = category.info.FirstOrDefault(i => i.name == "artwork_url");
 
-                    if (info != null)
+                    if (artistInfo != null && titleInfo != null)
                     {
-                        string filename = info.Value;
+                        string artist = artistInfo.Value;
+                        string title = titleInfo.Value;
+
+                        result.trackName = $"{artist} - {title}";
+                    }
+                    else if (fileNameInfo != null)
+                    {
+                        string filename = fileNameInfo.Value;
 
                         result.trackName = filename;
+                    }
+
+                    if (artworkUrl != null)
+                    {
+                        result.motSlideShowUrls = motSlideShowRetriever.Retrieve(artworkUrl.Value);
                     }
                 }
             }

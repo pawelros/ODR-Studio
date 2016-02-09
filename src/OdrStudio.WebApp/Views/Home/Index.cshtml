@@ -7,22 +7,14 @@
         <h2>{{status.trackName}}</h2>
         <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="{{status.trackPosition}}" aria-valuemin="0" aria-valuemax="1" style="width:{{status.trackPosition * 100}}%">
-            {{status.trackTime/status.trackLength*100}}%
+            {{Math.floor(status.trackTime/status.trackLength*100)}}%
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET MVC 6</li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518007">Gulp</a> and <a href="http://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-            <li>Theming using <a href="http://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
+<div class="row" ng-controller="playerController">
+    <div class="col-md-6">
         <h2>How to</h2>
         <ul>
             <li><a href="http://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
@@ -34,7 +26,7 @@
             <li><a href="http://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
         </ul>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <h2>Overview</h2>
         <ul>
             <li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET 5</a></li>
@@ -46,13 +38,11 @@
             <li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
         </ul>
     </div>
-    <div class="col-md-3">
-        <h2>Run & Deploy</h2>
+    <div class="col-md-2">
+        <h2>Health check</h2>
         <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517852">Run your app on .NET Core</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517853">Run commands in your project.json</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
+            <li>Web API is <span class="label label-{{status.isApiOnline ? 'success' : 'danger'}}">{{status.isApiOnline ? 'Online' : 'Offline'}}</span></li>
+            <li>VLC is <span class="label label-{{status.isOnline ? 'success' : 'danger'}}">{{status.isOnline ? 'Online' : 'Offline'}}</span></li>
         </ul>
     </div>
 </div>
