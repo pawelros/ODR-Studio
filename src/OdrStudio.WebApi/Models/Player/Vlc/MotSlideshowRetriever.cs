@@ -36,7 +36,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
             var fileInfo = new FileInfo(localVlcUri.LocalPath);
             var directoryInfo = fileInfo.Directory;
 
-            string[] imagePaths = (directoryInfo.EnumerateFiles().Select(
+            string[] imagePaths = (directoryInfo.EnumerateFiles("*.jpg").Select(
                 f =>
                 {
                     this.logger.LogVerbose($"processing file: {f.FullName}");

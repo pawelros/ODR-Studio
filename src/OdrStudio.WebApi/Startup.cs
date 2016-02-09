@@ -30,10 +30,14 @@ namespace OdrStudio.WebApi
 
             var motSLideShowRetriever = new ServiceDescriptor(typeof(IMotSlideShowRetriever), typeof(MotSlideShowRetriever), ServiceLifetime.Singleton);
             var playerClient = new ServiceDescriptor(typeof(IPlayerClient), typeof(VlcClient), ServiceLifetime.Singleton);
+            var motEncoder = new ServiceDescriptor(typeof(IMotEncoder), typeof(MotEncoder), ServiceLifetime.Singleton);
+            var motSlideShowSender = new ServiceDescriptor(typeof(IMotSlideshowSender), typeof(MotSlideshowSender), ServiceLifetime.Singleton);
 
 
             services.Add(motSLideShowRetriever);
             services.Add(playerClient);
+            services.Add(motEncoder);
+            services.Add(motSlideShowSender);
 
             services.AddCors();
         }
