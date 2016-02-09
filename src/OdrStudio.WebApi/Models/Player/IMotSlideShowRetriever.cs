@@ -1,7 +1,11 @@
+using Microsoft.AspNet.Mvc;
+
 namespace OdrStudio.WebApi.Models.Player
 {
     public interface IMotSlideShowRetriever
     {
-        string[] Retrieve(string basePath);
+        string[] RetrieveUrls(string basePath);
+
+        FileResult RetrieveImage(string relativePath);
     }
 }

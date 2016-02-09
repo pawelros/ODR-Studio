@@ -17,7 +17,7 @@ studioApp.controller('playerController', function ($scope, $http, $interval) {
     $scope.Math = window.Math;
 
             var getStatus = function () {
-                 $http.get("http://localhost:5001/api/player").then(function(response) {
+                 $http.get("http://localhost:5001/api/player/status").then(function(response) {
                     $scope.status = response.data;
                     $scope.status.isApiOnline = true;
                     }, function(response){

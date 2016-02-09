@@ -1,5 +1,8 @@
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.OptionsModel;
 using OdrStudio.WebApi.Models.Player;
 
 namespace OdrStudio.WebApi.Controllers
@@ -8,14 +11,16 @@ namespace OdrStudio.WebApi.Controllers
     public class PlayerController : Controller
     {
         private readonly IPlayerClient playerClient;
+        private readonly IMotSlideShowRetriever motSlideShowRetriever;
 
-        public PlayerController(IPlayerClient playerClient)
+        public PlayerController(IPlayerClient playerClient, IMotSlideShowRetriever motSlideShowRetriever)
         {
             this.playerClient = playerClient;
+            this.motSlideShowRetriever = motSlideShowRetriever;
         }
 
-        // GET: api/status
-        [HttpGet]
+        // GET: api/player/status
+        [HttpGet("status")]
         public async Task<IPlayerStatus> Get()
         {
             IPlayerStatus status = await this.playerClient.GetStatus();
@@ -23,11 +28,11 @@ namespace OdrStudio.WebApi.Controllers
             return status;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET api/player/motslideshow/{path}
+        [HttpGet("motslideshow/{*path}")]
+        public FileResult Get(string path)
         {
-            return "value";
+            return this.motSlideShowRetriever.RetrieveImage(path);
         }
 
         // POST api/values

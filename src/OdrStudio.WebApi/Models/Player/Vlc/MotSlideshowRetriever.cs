@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.OptionsModel;
 
@@ -18,7 +19,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
             this.logger = loggerFactory.CreateLogger("MotSlideShowRetriever");
         }
 
-        public string[] Retrieve(string originVlcPath)
+        public string[] RetrieveUrls(string originVlcPath)
         {
             this.logger.LogVerbose($"Retrieving mot slide show from originVlcPath: {originVlcPath}");
             var originVlcUri = new Uri(originVlcPath);
@@ -28,7 +29,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
 
             var localVlcPath = rgx.Replace(originVlcPath, this.motSlideShowUri);
             this.logger.LogVerbose($"localVlcPath: {localVlcPath}");
-            
+
             var localVlcUri = new Uri(localVlcPath);
             this.logger.LogVerbose($"localVlcUri: {localVlcUri}");
 
@@ -36,10 +37,33 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
             var directoryInfo = fileInfo.Directory;
 
             string[] imagePaths = (directoryInfo.EnumerateFiles().Select(
-                f => new Uri("file://" + rgx.Replace(f.FullName, string.Empty)).AbsolutePath))
+                f =>
+                {
+                    this.logger.LogVerbose($"processing file: {f.FullName}");
+                    string newFullName = rgx.Replace(f.FullName, "/artistalbum");
+                    this.logger.LogVerbose($"newFullName: {newFullName}");
+
+                    var uri = new Uri("file://" + newFullName);
+                    this.logger.LogVerbose($"uri: {uri}");
+                    this.logger.LogVerbose($"uri.AbsolutePath: {uri.AbsolutePath}");
+                    this.logger.LogVerbose($"uri.AbsoluteUri: {uri.AbsoluteUri}");
+
+                    return uri.AbsolutePath.Remove(0, 1);
+                }))
                 .ToArray();
 
             return imagePaths;
+        }
+
+        public FileResult RetrieveImage(string relativePath)
+        {
+            this.logger.LogVerbose($"Retrieving image using relative path: {relativePath}");
+
+            var uri = new Uri(new Uri(this.motSlideShowUri), relativePath);
+
+            this.logger.LogVerbose($"Retrieving image using uri local path: {uri.LocalPath}");
+
+            return new FileStreamResult(new FileStream(uri.LocalPath, FileMode.Open), "image/jpeg");
         }
     }
 }

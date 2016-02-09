@@ -61,7 +61,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
 
                     if (artworkUrl != null)
                     {
-                        result.motSlideShowUrls = motSlideShowRetriever.Retrieve(artworkUrl.Value);
+                        result.motSlideShowUrls = motSlideShowRetriever.RetrieveUrls(artworkUrl.Value);
                     }
                 }
             }
