@@ -2,6 +2,7 @@ var studioApp = angular.module('studioApp', []);
 studioApp.controller('playerController', function ($scope, $http, $interval) {
     
     var apiUrl = "http://localhost:5001/api/";
+    var previousMotSlideShowUrls = [];
 
     var defaultStatus = {
     "isApiOnline":false,
@@ -14,7 +15,7 @@ studioApp.controller('playerController', function ($scope, $http, $interval) {
     "trackLength":0,
     "trackPosition":0,
     "motSlideShowUrls" : null};
-    
+
     $scope.status = defaultStatus;
 
     $scope.Math = window.Math;
@@ -26,8 +27,32 @@ studioApp.controller('playerController', function ($scope, $http, $interval) {
 
                     if($scope.status.motSlideShowUrls){
                         var index;
+                        var motChanged = false;
+                        
+                        //console.log("====== checking if mot has changed ======");
+                        
+                        //console.log("current length: "+$scope.status.motSlideShowUrls.length+" prev length: "+previousMotSlideShowUrls.length);
+                        if($scope.status.motSlideShowUrls.length !== previousMotSlideShowUrls.length){
+                            //console.log("Length differs, mot has changed.")
+                            motChanged = true;
+                        }
+                        
                         for (index = 0; index < $scope.status.motSlideShowUrls.length; ++index) {
                             $scope.status.motSlideShowUrls[index] = apiUrl + $scope.status.motSlideShowUrls[index];
+
+                            if (motChanged === false) {
+                                //console.log("Comparing "+index+" element of current and prev: curr: "+ $scope.status.motSlideShowUrls[index]+"prev: "+previousMotSlideShowUrls[index]);
+                                if($scope.status.motSlideShowUrls[index] !== previousMotSlideShowUrls[index]){
+                                    //console.log("Url differs, mot has changed.");
+                                    motChanged = true;
+                                }
+                            }
+                        }
+
+                        if(motChanged) {
+                            //console.log("Sending PUT "+$scope.status.motSlideShowUrls[0]);
+                            previousMotSlideShowUrls = $scope.status.motSlideShowUrls.slice();
+                            $http.put($scope.status.motSlideShowUrls[0]);
                         }
                     }
 
