@@ -16,11 +16,11 @@ namespace OdrStudio.WebApi.Models.Player
             this.logger = loggerFactory.CreateLogger("MotEncoder");
         }
 
-        public void Invoke(string slideshowDirPath, string dslFilePath)
+        public void Invoke(string slideshowDirPath, string dlsFilePath)
         {
-            this.logger.LogVerbose($"Invoked with slideshowDirPath: {slideshowDirPath} dslFilePath: {dslFilePath}");
-            string arguments = $"-d \"{slideshowDirPath}\" -o {motFifo} -t \"{dslFilePath}\" -v";
-            this.logger.LogVerbose($"Starting mot-encoder process with arguments: {arguments}");
+            this.logger.LogVerbose($"Invoked with slideshowDirPath: {slideshowDirPath} dlsFilePath: {dlsFilePath}");
+            string arguments = $"-d \"{slideshowDirPath}\" -o {motFifo} -t \"{dlsFilePath}\" -v";
+            this.logger.LogInformation($"Starting mot-encoder process with arguments: {arguments}");
 
             new TaskFactory().StartNew(() => { StartProcess(arguments); });
         }

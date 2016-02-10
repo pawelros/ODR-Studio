@@ -11,5 +11,6 @@ namespace OdrStudio.WebApi.Models.Player
         int trackLength { get; set; }
         double trackPosition { get; set; }
         string[] motSlideShowUrls { get; set; }
+        string dls { get; set; }
     }
 }

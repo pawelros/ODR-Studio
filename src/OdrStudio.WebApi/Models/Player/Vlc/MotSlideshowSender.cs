@@ -20,9 +20,9 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
             this.logger = loggerFactory.CreateLogger("MotSlideshowSender");
         }
 
-        public void Send(string slideShowDir)
+        public void Send(string slideShowDir, string dls)
         {
-            this.logger.LogVerbose($"got slideShowDir: {slideShowDir}");
+            this.logger.LogVerbose($"got slideShowDir: {slideShowDir}, dls: {dls}");
 
             string pattern = @".*artistalbum";
             Regex rgx = new Regex(pattern);
@@ -37,6 +37,16 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
             var directoryInfo = fileInfo.Directory;
 
             FileInfo dlsFile = directoryInfo.EnumerateFiles("*.txt").FirstOrDefault();
+
+            if (dlsFile == null)
+            {
+                File.Create(Path.Combine(directoryInfo.FullName, "dls.txt"));
+            }
+
+            if (dls != null)
+            {
+                File.WriteAllText(dlsFile.FullName, dls);
+            }
 
             this.motEncoder.Invoke(directoryInfo.FullName, dlsFile.FullName);
         }

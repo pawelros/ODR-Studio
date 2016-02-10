@@ -36,9 +36,9 @@ namespace OdrStudio.WebApi.Controllers
 
         // PUT api/player/
         [HttpPut("motslideshow/{*path}")]
-        public void Put(string path)
+        public void Put(string path, [FromBody]PlayerStatus status)
         {
-            this.motSlideshowSender.Send(path);
+            this.motSlideshowSender.Send(path, status.dls);
         }
 
         // DELETE api/values/5

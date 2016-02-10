@@ -6,7 +6,7 @@
     <div class="container">
         <h2>{{status.trackName}}</h2>
         <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="{{status.trackPosition}}" aria-valuemin="0" aria-valuemax="1" style="width:{{status.trackPosition * 100}}%">
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{status.trackPosition}}" aria-valuemin="0" aria-valuemax="1" style="min-width: 2em; width:{{status.trackPosition * 100}}%">
             {{Math.floor(status.trackTime/status.trackLength*100)}}%
             </div>
         </div>
@@ -41,16 +41,16 @@
             </div>
     </div>
     <div class="col-md-6">
-        <h2>DSL</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET 5</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET 5 such as Startup and middleware.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
+        <h2>DLS</h2>
+        <div  class="form-group">
+        <label for="dls">Broadcasted DLS text:</label>
+        <textarea class="form-control" rows="5" id="dls" placeholder="{{status.dls}}" ng-model="newDls"></textarea>
+        </div>
+        <p>
+            <button type="button" class="btn btn-default btn-sm btn-primary" ng-click="updateDls()">
+            <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span> Update
+            </button>
+        </p>
     </div>
     <div class="col-md-3">
         <h2>Health Check</h2>

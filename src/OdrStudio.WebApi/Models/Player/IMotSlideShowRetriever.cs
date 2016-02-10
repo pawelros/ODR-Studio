@@ -7,5 +7,7 @@ namespace OdrStudio.WebApi.Models.Player
         string[] RetrieveUrls(string basePath);
 
         FileResult RetrieveImage(string relativePath);
+
+        string RetrieveDls(string basePath);
     }
 }
