@@ -22,14 +22,14 @@ studioApp.controller('playerController', function ($scope, $http, $interval) {
 
     $scope.Math = window.Math;
     
-    var putMot = function () {
-        $http.put($scope.status.motSlideShowUrls[0], null);
-    }
+    // var putMot = function () {
+    //     $http.put($scope.status.motSlideShowUrls[0], null);
+    // }
 
     $scope.updateDls = function() {
         // Deep copy
         var newStatus = jQuery.extend(true, {}, $scope.status);
-        newStatus.dls = $scope.newDls;
+        newStatus.dls = ($scope.newDls != null) ? $scope.newDls : $scope.status.dls;
         $http({
                 url: $scope.status.motSlideShowUrls[0],
                 method: "PUT",
@@ -70,7 +70,7 @@ studioApp.controller('playerController', function ($scope, $http, $interval) {
                 if(motChanged) {
                     //console.log("Sending PUT "+$scope.status.motSlideShowUrls[0]);
                     previousMotSlideShowUrls = $scope.status.motSlideShowUrls.slice();
-                    putMot();
+                    $scope.updateDls();
                 }
             }
 

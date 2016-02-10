@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.Logging;
 using OdrStudio.WebApi.Models.Player;
 
 namespace OdrStudio.WebApi.Controllers
@@ -10,12 +11,14 @@ namespace OdrStudio.WebApi.Controllers
         private readonly IPlayerClient playerClient;
         private readonly IMotSlideShowRetriever motSlideShowRetriever;
         private readonly IMotSlideshowSender motSlideshowSender;
-        
-        public PlayerController(IPlayerClient playerClient, IMotSlideShowRetriever motSlideShowRetriever, IMotSlideshowSender motSlideshowSender)
+        private readonly ILogger logger;
+
+        public PlayerController(IPlayerClient playerClient, IMotSlideShowRetriever motSlideShowRetriever, IMotSlideshowSender motSlideshowSender, ILoggerFactory loggerFactory)
         {
             this.playerClient = playerClient;
             this.motSlideShowRetriever = motSlideShowRetriever;
             this.motSlideshowSender = motSlideshowSender;
+            this.logger = loggerFactory.CreateLogger("PlayerController");
         }
 
         // GET: api/player/status
@@ -38,6 +41,12 @@ namespace OdrStudio.WebApi.Controllers
         [HttpPut("motslideshow/{*path}")]
         public void Put(string path, [FromBody]PlayerStatus status)
         {
+            if (status == null)
+            {
+                this.logger.LogWarning("body is null!");
+                return;
+            }
+
             this.motSlideshowSender.Send(path, status.dls);
         }
 
