@@ -1,0 +1,5 @@
+Ensemble 0x4FFF, Label: 'RosiuMux', ShortLabel: 'RsMux', LTO: +60 min, ECC: 0xEC, NumServices: 1
+    Audio-Service 0x33, Label: 'Archangel', ShortLabel: 'Angel', PTY: -, NumComponents: 2 (Audio: 2, Data: 0)
+        AudioComponent, SCIdS: 0, Label: '', ShortLabel: '', ASCTy: 0x3F (AAC), SubChId: 1, StartCU: 0, NumCU: 192, ErrorProt: EEP 1-A (FEC: 1/4), Datarate: 128 kbit/s, NumUserApps: 1
+            User App 1 / 1, Label: '', ShortLabel: '', DSCTy: 0x3C (MOT), X-PAD type: 12, UaType: 0x2 (Slideshow), DataLen: 2 [0C3C]
+        AudioComponent, SCIdS: 1, Label: '', ShortLabel: '', ASCTy: 0x3F (AAC), SubChId: 1, StartCU: 0, NumCU: 192, ErrorProt: EEP 1-A (FEC: 1/4), Datarate: 128 kbit/s, NumUserApps: 0
