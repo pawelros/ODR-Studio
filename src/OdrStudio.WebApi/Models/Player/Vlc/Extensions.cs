@@ -5,7 +5,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
 {
     internal static class Extensions
     {
-        public static IPlayerStatus AsPlayerStatus(this VlcResponse vlcResponse, IMotSlideShowRetriever motSlideShowRetriever)
+        public static IPlayerStatus AsPlayerStatus(this VlcResponse vlcResponse, IMotSlideShowRetriever motSlideShowRetriever, IDlsRetriever dlsRetriever)
         {
             PlayerStatus result = new PlayerStatus();
 
@@ -62,7 +62,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
                     if (artworkUrl != null)
                     {
                         result.motSlideShowUrls = motSlideShowRetriever.RetrieveUrls(artworkUrl.Value);
-                        result.dls = motSlideShowRetriever.RetrieveDls(artworkUrl.Value);
+                        result.dls = dlsRetriever.RetrieveDls(artworkUrl.Value);
                     }
                 }
             }
