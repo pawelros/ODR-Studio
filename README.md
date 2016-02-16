@@ -34,8 +34,33 @@ The list of desired features is huge, the next goals are to implement:
 ODR-Studio repo contains two projects: OdrStudio.WebApi and OdrStudio.WebApp.
 Both are build on shiny, bright, tremendous [.NET Core](http://docs.asp.net/en/latest/conceptual-overview/dotnetcore.html) that has already begun changing the future of responsive web app development. In order to run both application the only thing you need is to install [DNX](https://github.com/dotnet/cli) on your system. You can install it on any supported platform, but since the recomended OS for running Open Digital Radio tools is debian, here is the long story short how to bootstrap it on debian:
 
-Debian 8 (Jessie) - not supported due to liblldb-3.6 dependency (cons of using the frameworks that are in RC stage)
-Debian 9 (Stretch)
+
+
+1. Install unzip and curl if you don’t already have them:
+
+```sudo apt-get install unzip curl```
+
+2. Download and install DNVM:
+
+```curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh```
+
+Once this step is complete you should be able to run dnvm and see some help text.
+
+3. Install the .NET Execution Environment (DNX)
+
+The .NET Execution Environment (DNX) is used to build and run .NET projects. Use DNVM to install DNX for Mono or .NET Core (see Choosing the Right .NET For You on the Server).
+
+To install DNX for .NET Core:
+
+Install the DNX prerequisites:
+
+```sudo apt-get install libunwind8 gettext libssl-dev libcurl4-openssl-dev zlib1g libicu-dev uuid-dev```
+
+Use DNVM to install DNX for .NET Core:
+
+```dnvm upgrade -r coreclr```
+
+
 
 clone the repo
 
