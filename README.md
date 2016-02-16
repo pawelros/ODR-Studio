@@ -35,7 +35,6 @@ ODR-Studio repo contains two projects: OdrStudio.WebApi and OdrStudio.WebApp.
 Both are build on shiny, bright, tremendous [.NET Core](http://docs.asp.net/en/latest/conceptual-overview/dotnetcore.html) that has already begun changing the future of responsive web app development. In order to run both application the only thing you need is to install [DNX](https://github.com/dotnet/cli) on your system. You can install it on any supported platform, but since the recomended OS for running Open Digital Radio tools is debian, here is the long story short how to bootstrap it on debian:
 
 
-
 #### 1. Install unzip and curl if you don’t already have them:
 
  ```sudo apt-get install unzip curl```
@@ -46,7 +45,7 @@ Both are build on shiny, bright, tremendous [.NET Core](http://docs.asp.net/en/l
 
 Once this step is complete you should be able to run dnvm and see some help text.
 
-3. Install the .NET Execution Environment (DNX)
+#### 3. Install the .NET Execution Environment (DNX)
 
 The .NET Execution Environment (DNX) is used to build and run .NET projects. Use DNVM to install DNX for Mono or .NET Core (see Choosing the Right .NET For You on the Server).
 
@@ -54,13 +53,17 @@ To install DNX for .NET Core:
 
 Install the DNX prerequisites:
 
-```sudo apt-get install libunwind8 gettext libssl-dev libcurl4-openssl-dev zlib1g libicu-dev uuid-dev```
+```
+sudo apt-get install libunwind8 gettext libssl-dev libcurl4-openssl-dev zlib1g libicu-dev uuid-dev
+```
 
 Use DNVM to install DNX for .NET Core:
 
-```dnvm upgrade -r coreclr```
+```
+dnvm upgrade -r coreclr
+```
 
-4. Install libuv
+#### 4. Install libuv
 
 Libuv is a multi-platform asynchronous IO library that is used by Kestrel, a cross-platform HTTP server for hosting ASP.NET 5 web applications.
 
@@ -79,6 +82,8 @@ sudo ldconfig
 ```
 
 
+#### 5. Now you are ready to run the apps:
+
 Clone the repo
 
 ```
@@ -86,21 +91,16 @@ git clone git@github.com:Rosiv/ODR-Studio.git
 
 cd ODR-Studio/src/OdrStudio.WebApi/
 
-#download all dependencies
-dotnet restore
+#restore all dependencies
+dnu restore
 
 #run the app
-dotnet run
+dnx web
 
 #follow the same steps for OdrStudio.WebApp
 ```
 
-
-
-
-edit
-
-src/OdrStudio.WebApi/appsettings.json to match your multiplex and VLC configuration:
+edit src/OdrStudio.WebApi/appsettings.json to match your multiplex and VLC configuration:
 
 ```javascript
   "Player":{
