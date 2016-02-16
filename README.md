@@ -32,7 +32,7 @@ The list of desired features is huge, the next goals are to implement:
 ### Installation
 
 ODR-Studio repo contains two projects: OdrStudio.WebApi and OdrStudio.WebApp.
-Both are build on shiny, bright, tremendous [.NET Core](http://docs.asp.net/en/latest/conceptual-overview/dotnetcore.html) that has already begun changing the future of responsive web app development. In order to run both application the only thing you need is to install [DNX](https://github.com/dotnet/cli) on your system. You can install it on any supported platform, but since the recomended OS for running Open Digital Radio tools is debian, here is the long story short how to bootstrap it on debian:
+Both are build on shiny, bright, tremendous [.NET Core](http://docs.asp.net/en/latest/conceptual-overview/dotnetcore.html) that has already begun changing the future of responsive web app development. In order to run both application the only thing you need is to install [.NET Core](http://docs.asp.net/en/latest/getting-started/index.html) on your system. You can install it on any supported platform, but since the recomended OS for running Open Digital Radio tools is debian, here is the long story short how to bootstrap it on debian:
 
 
 #### 1. Install unzip and curl if you don’t already have them:
@@ -124,10 +124,15 @@ MotFifo - since mot-encoder reads only from fifo, we need a one.
 1. Start http streaming on your VLC
 2. Make sure that VLC API is working and you have access to it
 3. Configure your multiplexer, (at least fdk-aac-dabplus, mot-encoder, ODR-DabMux)
-4. Run ODR-Studio Web API and Web GUI
-5. Navigate to http://localhost:5000
+4. Run ODR-Studio Web API and Web GUI by executing dnx web command
+5. Navigate to http://localhost:5000 (Web GUI) and http://localhost:5001/player/status (Web API)
 
+### Workflow
 
+Here is a workflow diagram to illustrate the used design: 
 
 
 ![alt text](https://raw.githubusercontent.com/Rosiv/ODR-Studio/cleanup/doc/Workflow.jpg "Workflow")
+
+Feel free to poke me if you have any questions.
+Cheers
