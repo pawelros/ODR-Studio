@@ -9,6 +9,15 @@ ODR-Studio is a very basic (yet) concept of free, scallable, cross platform, res
 * Displays currently broadcasted MOT Slideshow
 * Displays currently broadcasted  DLS
  
+### How it looks like
+
+#### In full HD
+![alt text](https://raw.githubusercontent.com/Rosiv/ODR-Studio/cleanup/doc/web_gui_full_hd.png "Full HD Web GUI")
+
+#### On mobile
+![alt text](https://raw.githubusercontent.com/Rosiv/ODR-Studio/cleanup/doc/web_gui_mobile.png "Mobile Web GUI")
+
+ 
 ### What's next
 The list of desired features is huge, the next goals are to implement:
 * Play, Stop, Pause buttons
