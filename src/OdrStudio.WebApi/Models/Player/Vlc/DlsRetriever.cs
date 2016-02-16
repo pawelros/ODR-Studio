@@ -15,7 +15,7 @@ namespace OdrStudio.WebApi.Models.Player.Vlc
         public DlsRetriever(IOptions<PlayerConfiguration> configuration, ILoggerFactory loggerFactory)
         {
             this.motSlideShowUri = configuration.Value.MotSlideshowUri;
-            this.logger = loggerFactory.CreateLogger("MotSlideShowRetriever");
+            this.logger = loggerFactory.CreateLogger("DlsRetriever");
         }
 
         public string RetrieveDls(string originVlcPath)
