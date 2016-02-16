@@ -39,15 +39,26 @@ Debian 9 (Stretch)
 
 clone the repo
 
+```
 git clone git@github.com:Rosiv/ODR-Studio.git
 
-cd 
+cd ODR-Studio/src/OdrStudio.WebApi/
+
+#download all dependencies
+dotnet restore
+
+#run the app
+dotnet run
+
+#follow the same steps for OdrStudio.WebApp
+```
+
 
 
 
 edit
 
-src/OdrStudio.WebApi/appsettings.json to match your multiplekser and VLC configuration:
+src/OdrStudio.WebApi/appsettings.json to match your multiplex and VLC configuration:
 
 ```javascript
   "Player":{
