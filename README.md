@@ -49,6 +49,7 @@ edit
 
 src/OdrStudio.WebApi/appsettings.json to match your multiplekser and VLC configuration:
 
+```javascript
   "Player":{
       "Uri" : "http://192.168.1.2:8080",
       "Username" : "",
@@ -57,6 +58,7 @@ src/OdrStudio.WebApi/appsettings.json to match your multiplekser and VLC configu
       "MotFifo" : "/home/pr/odr_studio/data/mot_slideshow"
   }
 }
+```
 
 Uri - address of your VLC web stream
 Username - username with access to your VLC web API
