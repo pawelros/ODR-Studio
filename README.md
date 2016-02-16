@@ -60,9 +60,24 @@ Use DNVM to install DNX for .NET Core:
 
 ```dnvm upgrade -r coreclr```
 
+4. Install libuv
+
+Libuv is a multi-platform asynchronous IO library that is used by Kestrel, a cross-platform HTTP server for hosting ASP.NET 5 web applications.
+
+To build libuv you should do the following:
+
+```sudo apt-get install make automake libtool curl
+curl -sSL https://github.com/libuv/libuv/archive/v1.8.0.tar.gz | sudo tar zxfv - -C /usr/local/src
+cd /usr/local/src/libuv-1.8.0
+sudo sh autogen.sh
+sudo ./configure
+sudo make
+sudo make install
+sudo rm -rf /usr/local/src/libuv-1.8.0 && cd ~/
+sudo ldconfig```
 
 
-clone the repo
+Clone the repo
 
 ```
 git clone git@github.com:Rosiv/ODR-Studio.git
