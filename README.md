@@ -6,8 +6,8 @@ ODR-Studio is a very basic (yet) concept of free, scallable, cross platform, res
 * Can run on Linux, Windows, OS X
 * UI works fine on mobile devices
 * Displays info about currently played track
-* Displays MOT Slideshow
-* Displays DLS
+* Displays currently broadcasted MOT Slideshow
+* Displays currently broadcasted  DLS
  
 ### What's next
 The list of desired features is huge, the next goals are to implement:
