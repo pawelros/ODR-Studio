@@ -129,7 +129,7 @@ MotFifo - since mot-encoder reads only from fifo, we need a one.
 
 ### Workflow
 
-Here is a workflow diagram to illustrate the used design: 
+Here is a workflow diagram to illustrate the whole architecture: 
 
 
 ![alt text](https://raw.githubusercontent.com/Rosiv/ODR-Studio/cleanup/doc/Workflow.jpg "Workflow")
