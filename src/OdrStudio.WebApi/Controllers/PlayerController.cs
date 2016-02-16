@@ -49,11 +49,5 @@ namespace OdrStudio.WebApi.Controllers
 
             this.motSlideshowSender.Send(path, status.dls);
         }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
