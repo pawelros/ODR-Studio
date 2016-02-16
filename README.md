@@ -36,11 +36,11 @@ Both are build on shiny, bright, tremendous [.NET Core](http://docs.asp.net/en/l
 
 
 
-1. Install unzip and curl if you don’t already have them:
+#### 1. Install unzip and curl if you don’t already have them:
 
-```sudo apt-get install unzip curl```
+ ```sudo apt-get install unzip curl```
 
-2. Download and install DNVM:
+#### 2. Download and install DNVM:
 
 ```curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh```
 
